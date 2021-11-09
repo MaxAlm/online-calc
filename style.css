@@ -33,6 +33,19 @@ p {
     background-color: rgb(35, 35, 35);
 }
 
+.calculation {
+    position: absolute;
+    word-wrap: break-word;
+    top: -20px;
+    left: 5px;
+    width: 280px;
+    height: 80px;
+
+    font-weight: normal;
+    font-size: 19px;
+    color: rgb(141, 141, 141);
+}
+
 .input {
     position: relative;
     top: 82px;
