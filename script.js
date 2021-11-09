@@ -64,7 +64,7 @@ function buttonOperator(operator) {
         }
     }
     else {
-        calc.innerHTML = calc.innerHTML.substring(0, calc.innerHTML.length - 1)
+        calc.innerHTML = calc.innerHTML.substring(0, calc.innerText.length);
         operators.pop();
 
         switch (operator) {
