@@ -1,5 +1,6 @@
 // ===*VARIABLES*=== //
-var comma = false;
+var maxLength = 60;     // Controls max length of equation allowed 
+var comma = false;      // Keeps track of if comma has been entered or not
 const operators = [];
 const numbers = [];
 
@@ -36,35 +37,39 @@ function buttonOperator(operator) {
     var calc = document.getElementById("calculation");
 
     // Make sure new number isn't empty and fits into the calculation
-    if (input.innerHTML != "") {
-        numbers.push(parseFloat(input.innerHTML));
-        
-        if (calc.innerText.length + input.innerText.length + 3 < 80) {
+    if (input.innerText != "") {
+        var num = parseFloat(input.innerHTML.replace(",", "."));
+        numbers.push(num);
+
+        if (calc.innerText.length + input.innerText.length + 3 <= maxLength) {
             switch (operator) {
                 case "÷":
-                    calc.innerHTML += ` ${input.innerHTML} ÷`;
+                    calc.innerHTML += ` ${num.toString().replace(".", ",")} ÷`;
                     operators.push("÷");
                     break;
                 
                 case "×":
-                    calc.innerHTML += ` ${input.innerHTML} ×`;
+                    calc.innerHTML += ` ${num.toString().replace(".", ",")} ×`;
                     operators.push("×");
                     break;
                 
                 case "−":
-                    calc.innerHTML += ` ${input.innerHTML} −`;
+                    calc.innerHTML += ` ${num.toString().replace(".", ",")} −`;
                     operators.push("−");
                     break;
                 
                 case "+":
-                    calc.innerHTML += ` ${input.innerHTML} +`;
+                    calc.innerHTML += ` ${num.toString().replace(".", ",")} +`;
                     operators.push("+");
                     break;
             }
         }
+        else {
+            return;
+        }
     }
     else {
-        calc.innerHTML = calc.innerHTML.substring(0, calc.innerText.length);
+        calc.innerText = calc.innerText.substring(0, calc.innerText.length - 1);
         operators.pop();
 
         switch (operator) {
@@ -103,7 +108,7 @@ function buttonEquals() {
 function remove() {
     var input = document.getElementById("input");
 
-    input.innerHTML = input.innerHTML.substring(0, input.innerText.length - 1);
+    input.innerText = input.innerText.substring(0, input.innerText.length - 1);
 
     // Check if comma exists
     if (input.innerHTML.indexOf(",") == -1)
