@@ -38,7 +38,7 @@ function buttonOperator(operator) {
 
     // Make sure new number isn't empty and fits into the calculation
     if (input.innerText != "") {
-        var num = parseFloat(input.innerHTML.replace(",", "."));
+        let num = parseFloat(input.innerHTML.replace(",", "."));
         numbers.push(num);
 
         if (calc.innerText.length + input.innerText.length + 3 <= maxLength) {
