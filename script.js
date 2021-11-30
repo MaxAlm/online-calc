@@ -44,7 +44,7 @@ function buttonNumber(num) {
 
 // Operator buttons
 function buttonOperator(operator) {
-    if (document.getElementById("input").innerHTML != "Error!") {
+    if (document.getElementById("input").innerHTML != "Error!" && document.getElementById("input").innerHTML != "") {
         var input = document.getElementById("input");
         var calc = document.getElementById("calculation");
 
@@ -57,7 +57,7 @@ function buttonOperator(operator) {
         }
 
         // Make sure new number isn't empty and fits into the calculation
-        if (input.innerText != "") {
+        if (input.innerHTML != "") {
             let num = parseFloat(input.innerHTML.replace(",", "."));
             numbers.push(num);
 
@@ -224,6 +224,7 @@ function remove() {
     // If equals
     if (equals) {
         document.getElementById("calculation").innerHTML = "";
+        document.getElementById("input").innerHTML = "";
         numbers = [];
         operators = [];
         equals = false;
